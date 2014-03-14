@@ -67,7 +67,7 @@
       <file leaf-file-name="MonBowling.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/ProjetBowlingAndroid/MonBowling.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.1171875" vertical-offset="0" max-vertical-offset="512">
+            <state line="15" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.41015625" vertical-offset="0" max-vertical-offset="512">
               <folding />
             </state>
           </provider>
@@ -444,7 +444,7 @@
       <changelist id="c671d7ce-1e56-4c46-aee0-d0e3bd9f1ea7" name="Default" comment="" />
       <created>1394806216428</created>
       <updated>1394806216428</updated>
-      <workItem from="1394806218389" duration="212000" />
+      <workItem from="1394806218389" duration="672000" />
     </task>
     <task id="LOCAL-00001" summary="Initialisation">
       <created>1394806366382</created>
@@ -454,7 +454,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212000" />
+    <option name="totallyTimeSpent" value="672000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
@@ -515,7 +515,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/example/ProjetBowlingAndroid/MonBowling.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.1171875" vertical-offset="0" max-vertical-offset="512">
+        <state line="15" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.41015625" vertical-offset="0" max-vertical-offset="512">
           <folding />
         </state>
       </provider>
