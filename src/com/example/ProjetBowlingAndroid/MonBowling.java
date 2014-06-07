@@ -13,17 +13,23 @@ public class MonBowling extends Activity {
 	 private OnClickListener printButtonListener = new OnClickListener() {
 	        public void onClick(View v) {
 	            // Capture our edit text from layout
-	            EditText log = (EditText) findViewById(R.id.editText1);
+	            TextView log = (TextView) findViewById(R.id.TextView1);
 	            log.append("Lets call the printer class !!!\n");
-	            
+	            try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 	            //Lets do basic ICE stuff
 	            Ice.Communicator ic = null;
 	            try {
-	                log.append("Initializing ICE\n");
-	                ic = Ice.Util.initialize();
+	               log.append("Initializing ICE\n");
+	               String[] args = null;
+	                ic = Ice.Util.initialize(args);
 	                log.append("Initialized ICE, creating Object proxy\n");
-	                
-	                Ice.ObjectPrx base = ic.stringToProxy("SimplePrinter:default -p 10000");
+	                Thread.sleep(5000);
+	               /* Ice.ObjectPrx base = ic.stringToProxy("receptionJoueur:default -p 10020");
 	                log.append("Created Object proxy, casting to Printer proxy\n");
 	                
 	                receptionJoueurs.threadReceptionJoueursPrx receptionJoueur = receptionJoueurs.threadReceptionJoueursPrxHelper.checkedCast(base);
@@ -36,7 +42,7 @@ public class MonBowling extends Activity {
 	 
 	                log.append("Cast to Printer proxy SUCCESS, calling method\n");
 	                String[] equipe = new String[]{"Johan","Edouard"};
-	                log.append(String.valueOf(receptionJoueur.inscriptionJoueur(equipe)));
+	                log.append(String.valueOf(receptionJoueur.inscriptionJoueur(equipe)));*/
 	                
 	            } catch (Ice.LocalException e) {
 	                e.printStackTrace();
