@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MonBowling extends Activity {
 
@@ -99,9 +103,21 @@ public class MonBowling extends Activity {
                     if (receptionJoueur == null)
                         throw new Error("Invalid proxy");
 
-                    String[] equipe = new String[]{"Johan","Edouard"};
+                    List<String> equipe = new ArrayList<String>();
+                    List<EditText> editTextList = new ArrayList<EditText>();
+                    editTextList.add((EditText)findViewById(R.id.editText1));
+                    editTextList.add((EditText)findViewById(R.id.editText2));
+                    editTextList.add((EditText)findViewById(R.id.editText3));
+                    editTextList.add((EditText)findViewById(R.id.editText4));
+                    editTextList.add((EditText)findViewById(R.id.editText5));
+                    editTextList.add((EditText)findViewById(R.id.editText6));
 
-                    System.out.println(receptionJoueur.inscriptionJoueur(equipe));
+                    for(int i = 0; i < editTextList.size(); i++)
+                    {
+                        String value = editTextList.get(i).getText().toString().trim();
+                        if(!value.isEmpty())
+                            equipe.add(value);
+                    }
 
                 } catch (Ice.LocalException e) {
                     e.printStackTrace();
