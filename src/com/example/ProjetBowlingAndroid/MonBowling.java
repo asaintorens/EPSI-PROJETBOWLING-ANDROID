@@ -5,63 +5,125 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MonBowling extends Activity {
+
+    private static final int DIALOG_INITIALIZING = 1;
+    private static final int DIALOG_ERROR = 2;
+    private static final int DIALOG_FATAL = 3;
+
+    private static final String DEFAULT_HOST = "10.0.2.2";
+    private static final String HOSTNAME_KEY = "host";
+
+    private static final String BUNDLE_KEY_TIMEOUT = "zeroc:timeout";
+    private static final String BUNDLE_KEY_DELAY = "zeroc:delay";
+    private static final String BUNDLE_KEY_FLUSH_ENABLED = "zeroc:flush";
+    private static final String BUNDLE_KEY_LAST_ERROR = "zeroc:lastError";
+
+    private Ice.Communicator _communicator = null;
+    private DeliveryMode _deliveryMode;
+
+    private Button _sayHelloButton;
+    private Button _shutdownButton;
+
+    private TextView _status;
+
+
+
+    private Button _flushButton;
+
+    private String _lastError = "";
+
+    enum DeliveryMode
+    {
+        TWOWAY,
+        TWOWAY_SECURE,
+        ONEWAY,
+        ONEWAY_BATCH,
+        ONEWAY_SECURE,
+        ONEWAY_SECURE_BATCH,
+        DATAGRAM,
+        DATAGRAM_BATCH;
+
+        Ice.ObjectPrx apply(Ice.ObjectPrx prx)
+        {
+            switch (this)
+            {
+                case TWOWAY:
+                    prx = prx.ice_twoway();
+                    break;
+                case TWOWAY_SECURE:
+                    prx = prx.ice_twoway().ice_secure(true);
+                    break;
+                case ONEWAY:
+                    prx = prx.ice_oneway();
+                    break;
+                case ONEWAY_BATCH:
+                    prx = prx.ice_batchOneway();
+                    break;
+                case ONEWAY_SECURE:
+                    prx = prx.ice_oneway().ice_secure(true);
+                    break;
+                case ONEWAY_SECURE_BATCH:
+                    prx = prx.ice_batchOneway().ice_secure(true);
+                    break;
+                case DATAGRAM:
+                    prx = prx.ice_datagram();
+                    break;
+                case DATAGRAM_BATCH:
+                    prx = prx.ice_batchDatagram();
+                    break;
+            }
+            return prx;
+        }
+
+        public boolean isBatch()
+        {
+            return this == ONEWAY_BATCH || this == DATAGRAM_BATCH || this == ONEWAY_SECURE_BATCH;
+        }
+    }
 	
 	 private OnClickListener printButtonListener = new OnClickListener() {
 	        public void onClick(View v) {
-	            // Capture our edit text from layout
-	            TextView log = (TextView) findViewById(R.id.TextView1);
-	            log.append("Lets call the printer class !!!\n");
-	            try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-	            //Lets do basic ICE stuff
-	            Ice.Communicator ic = null;
-	            try {
-	               log.append("Initializing ICE\n");
-	               String[] args = null;
-	                ic = Ice.Util.initialize(args);
-	                log.append("Initialized ICE, creating Object proxy\n");
-	                Thread.sleep(5000);
-	               /* Ice.ObjectPrx base = ic.stringToProxy("receptionJoueur:default -p 10020");
-	                log.append("Created Object proxy, casting to Printer proxy\n");
-	                
-	                receptionJoueurs.threadReceptionJoueursPrx receptionJoueur = receptionJoueurs.threadReceptionJoueursPrxHelper.checkedCast(base);
-	                log.append("Casted to Printer proxy\n");
-	                
-	                if (receptionJoueur == null) {
-	                    log.append("Cast to Printer proxy FAILED\n");
-	                    throw new Error("Invalid proxy");
-	                }
-	 
-	                log.append("Cast to Printer proxy SUCCESS, calling method\n");
-	                String[] equipe = new String[]{"Johan","Edouard"};
-	                log.append(String.valueOf(receptionJoueur.inscriptionJoueur(equipe)));*/
-	                
-	            } catch (Ice.LocalException e) {
-	                e.printStackTrace();
-	                log.append("EXCEPTION: " + e.getMessage());
-	            } catch (Exception e) {
-	                System.err.println(e.getMessage());
-	                log.append("EXCEPTION: " + e.getMessage());
-	            }
-	            if (ic != null) {
-	                // Clean up
-	                try {
-	                    log.append(" Destroying ic\n");
-	                    ic.destroy();
-	                } catch (Exception e) {
-	                    System.err.println(e.getMessage());
-	                    log.append("EXCEPTION: " + e.getMessage());
-	                }
-	            }
-	 
+
+                int status = 0;
+                Ice.Communicator ic = null;
+                try {
+                    ic = Ice.Util.initialize();
+                    System.out.println("ok1" );
+                    Ice.ObjectPrx base = ic.stringToProxy("receptionJoueur :tcp -h 192.168.1.69 -p 10020");
+                    System.out.println("ok2" );
+                    receptionJoueurs.threadReceptionJoueursPrx receptionJoueur = receptionJoueurs.threadReceptionJoueursPrxHelper.checkedCast(base);
+                    System.out.println("ok3" );
+                    if (receptionJoueur == null)
+                        throw new Error("Invalid proxy");
+
+                    String[] equipe = new String[]{"Johan","Edouard"};
+
+                    System.out.println(receptionJoueur.inscriptionJoueur(equipe));
+
+                } catch (Ice.LocalException e) {
+                    e.printStackTrace();
+                    status = 1;
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    status = 1;
+                }
+                if (ic != null) {
+                    //Clean up
+                    //
+                    System.out.println("ok4" );
+                    try {
+                        System.out.println("ok5" );
+                      ic.destroy();
+                    } catch (Exception e) {
+                        System.out.println("ok6" );
+                        System.out.println(e.getCause());
+                        status = 1;
+                    }
+                }
+
 	        }
 	    };
     /**

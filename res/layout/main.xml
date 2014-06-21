@@ -17,11 +17,63 @@
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="36dp"
         android:background="#FFFFFF"
-        android:ems="10" >
+        android:ems="10" android:layout_below="@+id/textView1" android:layout_toRightOf="@+id/TextView1">
+
+        <requestFocus />
+    </EditText>
+    <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="#FFFFFF"
+            android:ems="10" android:layout_below="@+id/editText1" android:layout_toRightOf="@+id/TextView1">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="#FFFFFF"
+            android:ems="10" android:layout_below="@+id/editText2" android:layout_toRightOf="@+id/TextView1">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="#FFFFFF"
+            android:ems="10" android:layout_below="@+id/editText3" android:layout_toRightOf="@+id/TextView1">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="#FFFFFF"
+            android:ems="10" android:layout_below="@+id/editText4" android:layout_toRightOf="@+id/TextView1">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+            android:id="@+id/editText6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="#FFFFFF"
+            android:ems="10" android:layout_below="@+id/editText5" android:layout_toRightOf="@+id/TextView1">
 
         <requestFocus />
     </EditText>
