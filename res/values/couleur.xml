@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="couleurFond">#99FFCC</color>
+    <color name="couleurFond">#CC0099</color>
+    <color name="couleurPolice">#000000</color>
 </resources>

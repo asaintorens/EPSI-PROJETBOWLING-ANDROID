@@ -91,12 +91,12 @@ public class MonBowling extends Activity {
 	 private OnClickListener printButtonListener = new OnClickListener() {
 	        public void onClick(View v) {
 
-                int status = 0;
+             
                 Ice.Communicator ic = null;
                 try {
                     ic = Ice.Util.initialize();
                     System.out.println("ok1" );
-                    Ice.ObjectPrx base = ic.stringToProxy("receptionJoueur :tcp -h 192.168.1.69 -p 10020");
+                    Ice.ObjectPrx base = ic.stringToProxy("receptionJoueur :tcp -h 192.168.1.10 -p 10020");
                     System.out.println("ok2" );
                     receptionJoueurs.threadReceptionJoueursPrx receptionJoueur = receptionJoueurs.threadReceptionJoueursPrxHelper.checkedCast(base);
                     System.out.println("ok3" );
@@ -121,10 +121,10 @@ public class MonBowling extends Activity {
 
                 } catch (Ice.LocalException e) {
                     e.printStackTrace();
-                    status = 1;
+                 
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
-                    status = 1;
+                   
                 }
                 if (ic != null) {
                     //Clean up
@@ -136,7 +136,7 @@ public class MonBowling extends Activity {
                     } catch (Exception e) {
                         System.out.println("ok6" );
                         System.out.println(e.getCause());
-                        status = 1;
+                      
                     }
                 }
 
@@ -149,7 +149,6 @@ public class MonBowling extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        final TextView vTextView = (TextView)findViewById(R.id.textView1);
         Button vButtonWeb = (Button)findViewById(R.id.button1);
         vButtonWeb.setOnClickListener(printButtonListener);
         /*{
