@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/infoConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,41 +20,9 @@
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/infoConfirm"
+        android:layout_below="@+id/infoConfirm"
         android:layout_marginTop="38dp"
-        android:background="#FFFFFF"
-        android:ems="10"
-        android:textColor="@color/couleurPolice" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="36dp"
-        android:background="#FFFFFF"
-        android:ems="10"
-        android:textColor="@color/couleurPolice" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_centerVertical="true"
-        android:background="#FFFFFF"
-        android:ems="10"
-        android:textColor="@color/couleurPolice" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_below="@+id/editText4"
-        android:layout_marginTop="34dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:textColor="@color/couleurPolice" />
@@ -81,5 +49,38 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:text="Inscription" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_below="@+id/editText3"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:textColor="@color/couleurPolice" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="26dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:textColor="@color/couleurPolice" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText4"
+        android:layout_below="@+id/editText4"
+        android:layout_marginTop="26dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:textColor="@color/couleurPolice" />
 
 </RelativeLayout>

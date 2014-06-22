@@ -1,6 +1,7 @@
 package com.example.ProjetBowlingAndroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -102,22 +103,30 @@ public class MonBowling extends Activity {
                     System.out.println("ok3" );
                     if (receptionJoueur == null)
                         throw new Error("Invalid proxy");
-
-                    List<String> equipe = new ArrayList<String>();
+                    System.out.println("ok4" );
+                    String equipe[] = new String[6];
                     List<EditText> editTextList = new ArrayList<EditText>();
-                    editTextList.add((EditText)findViewById(R.id.editText1));
+                    editTextList.add((EditText)findViewById(R.id.infoConfirm));
                     editTextList.add((EditText)findViewById(R.id.editText2));
                     editTextList.add((EditText)findViewById(R.id.editText3));
                     editTextList.add((EditText)findViewById(R.id.editText4));
                     editTextList.add((EditText)findViewById(R.id.editText5));
                     editTextList.add((EditText)findViewById(R.id.editText6));
-
+                    System.out.println("ok5" );
                     for(int i = 0; i < editTextList.size(); i++)
                     {
                         String value = editTextList.get(i).getText().toString().trim();
                         if(!value.isEmpty())
-                            equipe.add(value);
+                            equipe[i] = value;
                     }
+                    System.out.println("ok6" );
+                    String infoConfirm = receptionJoueur.inscriptionJoueur(equipe);
+                    System.out.println("ok7" );
+                    Intent intent = new Intent(MonBowling.this, Confirmation.class);
+                    System.out.println("ok8" );
+                    intent.putExtra("infoConfirm", infoConfirm);
+                    System.out.println("ok9" );
+                    startActivity(intent);
 
                 } catch (Ice.LocalException e) {
                     e.printStackTrace();
@@ -134,8 +143,8 @@ public class MonBowling extends Activity {
                         System.out.println("ok5" );
                       ic.destroy();
                     } catch (Exception e) {
-                        System.out.println("ok6" );
-                        System.out.println(e.getCause());
+                      //  System.out.println("ok6" );
+                        //System.out.println(e.getCause());
                       
                     }
                 }
