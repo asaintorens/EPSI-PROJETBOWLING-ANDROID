@@ -8,11 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="46dp"
+        android:layout_alignParentRight="true"
         android:background="@color/couleurFond"
-        android:textColor="#FFFFFF"
         android:height="120dp"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         android:width="85dp" />
 
 </RelativeLayout>
