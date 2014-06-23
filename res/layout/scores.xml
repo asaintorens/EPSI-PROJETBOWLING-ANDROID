@@ -4,23 +4,14 @@
     android:background="@color/couleurFond" >
 
     <TextView
-        android:id="@+id/infoConfirmationTextview"
+        android:id="@+id/scoresTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:background="@color/couleurFond"
         android:height="120dp"
-        android:text="TextView"
         android:textColor="#FFFFFF"
         android:width="85dp" />
-
-    <Button
-        android:id="@+id/buttonConfirmation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Voir les scores" />
 
 </RelativeLayout>

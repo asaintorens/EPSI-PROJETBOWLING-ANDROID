@@ -26,6 +26,10 @@
              android:name="com.example.ProjetBowlingAndroid.Confirmation" 
              android:label="@string/app_name" >
         </activity>
+          <activity
+             android:name="com.example.ProjetBowlingAndroid.Scores" 
+             android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
