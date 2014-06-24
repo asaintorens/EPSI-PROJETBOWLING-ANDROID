@@ -1,16 +1,11 @@
 package com.example.ProjetBowlingAndroid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.DropBoxManager.Entry;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class Confirmation extends Activity {
@@ -21,7 +16,6 @@ public class Confirmation extends Activity {
 		public void onClick(View v) {
 			Intent intent = new Intent(Confirmation.this, Scores.class);
 			intent.putExtra("idEquipe", Confirmation.getIdEquipe());
-
 			startActivity(intent);
 		}
 	};
@@ -60,9 +54,13 @@ public class Confirmation extends Activity {
 
 
 
-	public void setIdEquipe(int idEquipe) {
-		this.idEquipe = idEquipe;
+	public static void setIdEquipe(int idEquipe) {
+		Confirmation.idEquipe = idEquipe;
 	}
+
+
+
+
 
 }
 
