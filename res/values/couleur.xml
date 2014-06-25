@@ -2,4 +2,5 @@
 <resources>
     <color name="couleurFond">#CC0099</color>
     <color name="couleurPolice">#000000</color>
+    <color name="bordure">#EC9FE9</color>
 </resources>

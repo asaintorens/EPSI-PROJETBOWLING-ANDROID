@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class Scores extends Activity {
 
+	private receptionScores reception;
 	private TextView affichageScores;
 	private int idEquipe;
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,62 +30,61 @@ public class Scores extends Activity {
 		System.out.println("identifiant equipe:   " + String.valueOf(idEquipe));
 		System.out.println("ok5");
 		System.out.println("ok6");
-		this .affichageScores = ((TextView)findViewById(R.id.scoresTextview));
+		this.affichageScores = ((TextView)findViewById(R.id.scoresTextview));
 		System.out.println("ok7");
 		traitement();
-		
+
 	}
-		public void traitement(){
-			receptionScores reception = new receptionScores(this.idEquipe);
-			reception.start();
-			String scores ="";
-			boolean partieFinie = false;
-			boolean partieCommencee = false;
-			String affichage = "";
-		while (!partieFinie){
-			System.out.println("debut");
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			scores = reception.getScores();
-			System.out.println("getscores");
-			System.out.println("scores:::::::::::::::::::::::::" + scores);
-			if (scores != null){
-			if (!scores.equals("0")){
-				System.out.println("normal");
-				partieCommencee = true;
-				String[] scoresParsee = scores.split("\\,");
-				for (String ligne : scoresParsee){
-					affichage = affichage + ligne + "\n";
+	public void traitement(){
+		this.reception = new receptionScores(this.idEquipe);
+		this.reception.start();
+
+		Thread t = new Thread() {
+
+			@Override
+			public void run() {
+				try {
+					while (!getReception().getPartieFinie()) {
+						Thread.sleep(1000);
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								updateScores(getReception().getScores());
+							}
+						});
+					}
+				} catch (InterruptedException e) {
 				}
-				this.affichageScores.setText(affichage);
+			}
+		};
+		t.start();
+
+	}
+
+
+	private void updateScores(String scores){
+		if (!this.reception.getPartieCommencee()){
+			this.affichageScores.setText("La partie n'a pas commence");
+		}
+		else{
+			if(!this.reception.getPartieFinie()){
+				String[] scoresParJoueur;
+				String scoreFormate = "";
+				scoresParJoueur = this.reception.getScores().split(",");
+				for (String ligne : scoresParJoueur){
+					scoreFormate = scoreFormate + ligne + "\n";
+				}
+				this.affichageScores.setText(scoreFormate);
 			}
 			else{
-				if (!partieCommencee){
-					System.out.println("partie as commence");
-					affichage = "La partie n'a pas commence";
-					this.affichageScores.setText(affichage);
-				}
-				else{
-					affichage = "La partie est finie.";
-					partieFinie = true;
-					System.out.println("partie finie");
-					this.affichageScores.setText(affichage);
-					reception.stop();
-				}
-			}
+				this.affichageScores.setText("La partie est finie");
 			}
 		}
-
-		
-		
-			
-
 	}
 
+	private receptionScores getReception(){
+		return this.reception;
+	}
+
+
 }
-
-

@@ -1,17 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/couleurFond" >
+    android:background="@color/bordure"
+    android:padding="10dp" >
 
-    <TextView
-        android:id="@+id/scoresTextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/couleurFond"
-        android:height="120dp"
-        android:textColor="#FFFFFF"
-        android:width="85dp" />
+    <RelativeLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:background="@color/couleurFond" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/scoresTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/couleurFond"
+            android:gravity="center"
+            android:height="250dp"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:width="85dp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/kitty_2" />
+    </RelativeLayout>
+
+</FrameLayout>
