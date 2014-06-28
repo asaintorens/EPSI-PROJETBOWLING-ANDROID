@@ -18,20 +18,15 @@ public class Scores extends Activity {
 	private receptionScores reception;
 	private TextView affichageScores;
 	private int idEquipe;
+	private String scores = "";
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		System.out.println("ok1");
 		setContentView(R.layout.scores);
-		System.out.println("ok2");
 		Bundle b = getIntent().getExtras();
-		System.out.println("ok3");
 		this.idEquipe = b.getInt("idEquipe");
-		System.out.println("ok4");
 		System.out.println("identifiant equipe:   " + String.valueOf(idEquipe));
-		System.out.println("ok5");
-		System.out.println("ok6");
 		this.affichageScores = ((TextView)findViewById(R.id.scoresTextview));
-		System.out.println("ok7");
 		traitement();
 
 	}
@@ -49,7 +44,8 @@ public class Scores extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								updateScores(getReception().getScores());
+								//updateScores(getReception().getScores());
+								updateScores();
 							}
 						});
 					}
@@ -62,7 +58,7 @@ public class Scores extends Activity {
 	}
 
 
-	private void updateScores(String scores){
+	private void updateScores(){
 		if (!this.reception.getPartieCommencee()){
 			this.affichageScores.setText("La partie n'a pas commence");
 		}
@@ -73,11 +69,12 @@ public class Scores extends Activity {
 				scoresParJoueur = this.reception.getScores().split(",");
 				for (String ligne : scoresParJoueur){
 					scoreFormate = scoreFormate + ligne + "\n";
+					this.scores = scoreFormate;
 				}
 				this.affichageScores.setText(scoreFormate);
 			}
 			else{
-				this.affichageScores.setText("La partie est finie");
+				this.affichageScores.setText("La partie est finie" + "\n" + this.scores);
 			}
 		}
 	}
@@ -86,5 +83,10 @@ public class Scores extends Activity {
 		return this.reception;
 	}
 
+	
+	public void setScores (String scores){
+		this.scores = scores;
+	}
+	
 
 }
